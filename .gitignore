@@ -1,0 +1,26 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Environment
+.env
+
+# Docker volumes (if any local data folders get created)
+minio-data/
+postgres-data/
+airflow-logs/
+
+# dbt
+dbt-project/target/
+dbt-project/logs/
+dbt-project/dbt_packages/
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
