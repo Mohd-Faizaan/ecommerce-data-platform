@@ -1,0 +1,201 @@
+product_id,product_name,category,brand,price
+1,Wonderchef Consequatur Groc,Grocery,Mivi,13912.19
+2,Mivi Dicta Spor,Sports,Fabindia,5310.47
+3,Wildcraft Omnis Beau,Beauty,Mivi,11119.95
+4,Mivi Dolorem Groc,Grocery,Fabindia,15794.57
+5,Prestige Laborum Beau,Beauty,Prestige,10877.97
+6,Wonderchef Fugit Groc,Grocery,Mivi,9850.42
+7,Noise Voluptas Groc,Grocery,Noise,6311.06
+8,Noise Consectetur Groc,Grocery,Wonderchef,13066.21
+9,Boat Sunt Beau,Beauty,Noise,14431.36
+10,Wonderchef Perferendis Groc,Grocery,Mivi,10409.46
+11,Prestige Amet Home,Home & Kitchen,Mivi,1209.5
+12,Wildcraft Perferendis Elec,Electronics,Wildcraft,4451.89
+13,Noise Nostrum Book,Books,Wonderchef,5484.07
+14,Wildcraft Aspernatur Elec,Electronics,Fabindia,21015.07
+15,Wonderchef Ad Book,Books,Noise,4219.98
+16,Prestige Dignissimos Fash,Fashion,Prestige,12751.54
+17,Prestige Aliquid Book,Books,Mivi,10243.91
+18,Puma Placeat Groc,Grocery,Boat,16768.3
+19,Boat Nihil Fash,Fashion,Wildcraft,11130.66
+20,Puma Accusantium Groc,Grocery,Noise,2805.39
+21,Wonderchef Hic Beau,Beauty,Nivea,6416.58
+22,Boat Quae Spor,Sports,Wonderchef,22243.17
+23,Puma Consequuntur Book,Books,Fabindia,3663.9
+24,Noise Inventore Beau,Beauty,Nivea,2612.47
+25,Noise Ex Spor,Sports,Prestige,1664.84
+26,Puma Sapiente Beau,Beauty,Wildcraft,10910.75
+27,Boat Inventore Home,Home & Kitchen,Wonderchef,15646.58
+28,Mivi Cumque Spor,Sports,Wildcraft,1414.57
+29,Nivea Quaerat Elec,Electronics,Noise,13609.28
+30,Fabindia Maxime Spor,Sports,Mivi,17969.43
+31,Noise Corporis Elec,Electronics,Noise,4450.52
+32,Prestige Culpa Home,Home & Kitchen,Prestige,21893.56
+33,Noise Assumenda Beau,Beauty,Boat,8860.88
+34,Prestige Occaecati Spor,Sports,Boat,9344.17
+35,Boat Eum Beau,Beauty,Prestige,3989.41
+36,Mivi Aut Elec,Electronics,Puma,7320.64
+37,Fabindia Perspiciatis Fash,Fashion,Prestige,22732.95
+38,Wildcraft Ipsum Groc,Grocery,Wildcraft,2593.53
+39,Boat Est Groc,Grocery,Mivi,599.08
+40,Wonderchef Maiores Spor,Sports,Wonderchef,16865.98
+41,Prestige Voluptatibus Elec,Electronics,Boat,10794.71
+42,Boat Earum Home,Home & Kitchen,Nivea,10905.37
+43,Wildcraft Necessitatibus Home,Home & Kitchen,Nivea,15688.97
+44,Nivea Blanditiis Beau,Beauty,Puma,14601.77
+45,Prestige Inventore Book,Books,Boat,21032.11
+46,Nivea Esse Elec,Electronics,Puma,679.91
+47,Fabindia Odit Elec,Electronics,Mivi,21646.21
+48,Nivea Expedita Beau,Beauty,Prestige,22237.8
+49,Wonderchef Illum Beau,Beauty,Wonderchef,12328.98
+50,Wildcraft Veniam Spor,Sports,Mivi,8436.1
+51,Fabindia Ea Elec,Electronics,Boat,9879.92
+52,Noise Eligendi Fash,Fashion,Wonderchef,338.09
+53,Puma Et Beau,Beauty,Fabindia,13819.11
+54,Puma Saepe Groc,Grocery,Boat,573.1
+55,Wildcraft Quidem Spor,Sports,Nivea,2681.18
+56,Prestige Ipsum Book,Books,Wildcraft,3913.89
+57,Noise Sunt Elec,Electronics,Boat,24584.86
+58,Nivea Tempora Home,Home & Kitchen,Fabindia,8113.45
+59,Fabindia A Elec,Electronics,Wildcraft,21132.41
+60,Mivi Nostrum Elec,Electronics,Fabindia,18378.71
+61,Wildcraft Corporis Spor,Sports,Nivea,21643.9
+62,Boat Repellat Elec,Electronics,Puma,14968.55
+63,Boat Omnis Book,Books,Wildcraft,20916.52
+64,Wildcraft Debitis Beau,Beauty,Wonderchef,23334.51
+65,Prestige Quaerat Fash,Fashion,Wildcraft,13023.04
+66,Prestige Ad Home,Home & Kitchen,Noise,18574.86
+67,Boat Assumenda Spor,Sports,Wildcraft,8194.56
+68,Nivea Temporibus Fash,Fashion,Mivi,21173.49
+69,Fabindia Nisi Beau,Beauty,Mivi,12692.83
+70,Puma Aut Beau,Beauty,Wildcraft,1127.4
+71,Boat Facilis Book,Books,Wildcraft,6204.67
+72,Noise Velit Book,Books,Puma,3538.25
+73,Nivea Eius Groc,Grocery,Wildcraft,11110.24
+74,Nivea Reiciendis Book,Books,Puma,15561.93
+75,Mivi Perspiciatis Book,Books,Nivea,1626.1
+76,Fabindia Officia Spor,Sports,Mivi,1601.16
+77,Puma Illum Fash,Fashion,Noise,6954.77
+78,Fabindia Voluptas Beau,Beauty,Prestige,16768.37
+79,Prestige Sunt Fash,Fashion,Wonderchef,17863.69
+80,Wonderchef Veritatis Elec,Electronics,Mivi,16371.36
+81,Mivi Atque Groc,Grocery,Nivea,5657.55
+82,Fabindia Amet Fash,Fashion,Noise,7024.66
+83,Puma Illum Fash,Fashion,Puma,17732.04
+84,Boat Sit Groc,Grocery,Boat,17567.68
+85,Wildcraft Sit Home,Home & Kitchen,Noise,10557.05
+86,Nivea Nesciunt Elec,Electronics,Wildcraft,24856.86
+87,Wildcraft Fugit Beau,Beauty,Noise,21764.05
+88,Nivea Nulla Fash,Fashion,Puma,18485.26
+89,Mivi Nostrum Groc,Grocery,Mivi,319.94
+90,Wildcraft Consequuntur Beau,Beauty,Wonderchef,24872.67
+91,Boat Accusamus Home,Home & Kitchen,Mivi,18917.07
+92,Nivea Vero Fash,Fashion,Nivea,9601.57
+93,Prestige Iure Fash,Fashion,Prestige,17067.54
+94,Fabindia Alias Fash,Fashion,Mivi,22261.87
+95,Wildcraft Ex Fash,Fashion,Noise,12229.02
+96,Prestige Quae Elec,Electronics,Mivi,16329.78
+97,Wildcraft Vitae Fash,Fashion,Mivi,17572.34
+98,Nivea Nesciunt Groc,Grocery,Nivea,12454.17
+99,Fabindia Sint Groc,Grocery,Nivea,22889.48
+100,Noise Quod Fash,Fashion,Mivi,20168.79
+101,Prestige Laboriosam Spor,Sports,Fabindia,5114.12
+102,Puma Vero Elec,Electronics,Wonderchef,8291.57
+103,Noise Necessitatibus Spor,Sports,Nivea,3641.61
+104,Wildcraft Labore Book,Books,Noise,7449.5
+105,Noise Praesentium Book,Books,Puma,18245.81
+106,Fabindia Nemo Spor,Sports,Noise,23065.03
+107,Nivea Recusandae Book,Books,Boat,11246.58
+108,Puma Molestias Elec,Electronics,Noise,11338.99
+109,Prestige Voluptatum Fash,Fashion,Puma,19500.46
+110,Prestige Iusto Elec,Electronics,Fabindia,7465.65
+111,Prestige Fuga Elec,Electronics,Wildcraft,4005.05
+112,Fabindia Reprehenderit Groc,Grocery,Boat,20584.08
+113,Mivi Odit Home,Home & Kitchen,Noise,17938.66
+114,Puma Dolorum Elec,Electronics,Wildcraft,10884.73
+115,Wonderchef Consequatur Book,Books,Mivi,6088.17
+116,Fabindia Similique Groc,Grocery,Boat,3774.89
+117,Nivea Magni Beau,Beauty,Fabindia,17196.54
+118,Fabindia Suscipit Spor,Sports,Boat,16038.54
+119,Boat Dolorum Book,Books,Noise,24310.52
+120,Prestige Voluptatem Spor,Sports,Prestige,22465.72
+121,Wildcraft Illo Spor,Sports,Wonderchef,774.62
+122,Wildcraft Delectus Home,Home & Kitchen,Mivi,3138.94
+123,Wildcraft Sed Home,Home & Kitchen,Puma,9140.29
+124,Wildcraft Quidem Book,Books,Wonderchef,21739.23
+125,Mivi Recusandae Elec,Electronics,Mivi,10878.91
+126,Nivea Quis Home,Home & Kitchen,Fabindia,23723.91
+127,Puma Mollitia Book,Books,Boat,10239.83
+128,Wonderchef Quaerat Book,Books,Nivea,4871.58
+129,Puma Voluptatum Elec,Electronics,Puma,16143.58
+130,Nivea Odit Book,Books,Wildcraft,17378.71
+131,Puma Totam Beau,Beauty,Puma,10835.55
+132,Boat Neque Fash,Fashion,Nivea,15802.15
+133,Wonderchef Atque Home,Home & Kitchen,Wildcraft,6195.9
+134,Prestige Tempore Fash,Fashion,Fabindia,20813.45
+135,Puma Eligendi Home,Home & Kitchen,Nivea,13752.05
+136,Wonderchef Veritatis Home,Home & Kitchen,Noise,19229.54
+137,Noise Itaque Groc,Grocery,Puma,9102.12
+138,Nivea Veniam Fash,Fashion,Puma,11496.04
+139,Wildcraft Laboriosam Fash,Fashion,Wildcraft,17231.13
+140,Nivea Rem Spor,Sports,Nivea,18927.94
+141,Puma Voluptas Home,Home & Kitchen,Prestige,1759.72
+142,Puma Veniam Fash,Fashion,Boat,11305.25
+143,Puma Delectus Beau,Beauty,Noise,20151.18
+144,Noise Placeat Beau,Beauty,Mivi,12816.1
+145,Wonderchef Odio Beau,Beauty,Nivea,14961.48
+146,Wonderchef Natus Spor,Sports,Wildcraft,21868.74
+147,Fabindia Quas Spor,Sports,Prestige,4409.62
+148,Wonderchef Voluptates Spor,Sports,Noise,20894.2
+149,Nivea Voluptatem Groc,Grocery,Boat,1682.08
+150,Prestige Est Spor,Sports,Wonderchef,22929.14
+151,Wildcraft Fugit Home,Home & Kitchen,Mivi,3636.1
+152,Fabindia Expedita Home,Home & Kitchen,Puma,2686.42
+153,Noise Voluptas Book,Books,Puma,15233.49
+154,Noise Eos Fash,Fashion,Prestige,21083.29
+155,Fabindia Possimus Fash,Fashion,Wonderchef,12429.77
+156,Noise Doloremque Book,Books,Boat,19515.92
+157,Fabindia Aspernatur Spor,Sports,Puma,3201.56
+158,Fabindia Nobis Home,Home & Kitchen,Wildcraft,5589.63
+159,Noise Laboriosam Groc,Grocery,Wonderchef,13543.58
+160,Wonderchef Molestiae Groc,Grocery,Wildcraft,14130.12
+161,Puma Blanditiis Groc,Grocery,Noise,18995.37
+162,Puma Tempore Elec,Electronics,Noise,3973.76
+163,Mivi Exercitationem Elec,Electronics,Prestige,23828.15
+164,Boat Quod Spor,Sports,Boat,7834.46
+165,Nivea Reprehenderit Groc,Grocery,Nivea,2936.92
+166,Noise Similique Book,Books,Mivi,9433.54
+167,Puma Nostrum Beau,Beauty,Wildcraft,14294.26
+168,Boat Dolorem Spor,Sports,Noise,20981.62
+169,Noise Voluptates Beau,Beauty,Wildcraft,7061.58
+170,Fabindia Velit Book,Books,Wonderchef,13447.0
+171,Fabindia Aliquid Book,Books,Mivi,18675.39
+172,Prestige Cupiditate Elec,Electronics,Wildcraft,16077.14
+173,Wonderchef Minus Groc,Grocery,Fabindia,7890.43
+174,Wildcraft Sed Home,Home & Kitchen,Nivea,18833.7
+175,Wonderchef Perferendis Book,Books,Nivea,9180.64
+176,Wildcraft Nisi Home,Home & Kitchen,Nivea,17756.52
+177,Wildcraft Blanditiis Spor,Sports,Mivi,11557.43
+178,Fabindia Vero Groc,Grocery,Noise,1955.62
+179,Boat Pariatur Home,Home & Kitchen,Noise,12650.2
+180,Nivea Perferendis Spor,Sports,Wonderchef,14209.68
+181,Fabindia Placeat Fash,Fashion,Boat,7282.31
+182,Nivea Molestias Groc,Grocery,Puma,11504.81
+183,Mivi Voluptates Spor,Sports,Mivi,16678.32
+184,Nivea Ab Spor,Sports,Noise,2532.59
+185,Fabindia Cupiditate Groc,Grocery,Noise,24517.25
+186,Wildcraft Consectetur Beau,Beauty,Wonderchef,7913.79
+187,Noise Sequi Elec,Electronics,Nivea,11579.08
+188,Nivea Nemo Beau,Beauty,Boat,3524.69
+189,Prestige Consectetur Home,Home & Kitchen,Prestige,5881.2
+190,Mivi Minus Fash,Fashion,Noise,16880.2
+191,Wonderchef Eveniet Spor,Sports,Noise,5117.37
+192,Noise Ipsa Book,Books,Mivi,11835.2
+193,Wildcraft Vitae Groc,Grocery,Fabindia,2219.34
+194,Puma Alias Beau,Beauty,Boat,18078.98
+195,Nivea Molestias Fash,Fashion,Wonderchef,4362.64
+196,Wonderchef Dolorum Fash,Fashion,Noise,9405.84
+197,Boat Eius Fash,Fashion,Fabindia,687.52
+198,Noise Eos Spor,Sports,Puma,15675.3
+199,Mivi Unde Book,Books,Wonderchef,23000.98
+200,Mivi Occaecati Beau,Beauty,Wonderchef,21602.42
