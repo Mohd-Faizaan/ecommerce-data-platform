@@ -6,7 +6,7 @@ from datetime import datetime
 
 # ---------- MinIO connection ----------
 client = Minio(
-    "localhost:9000",
+    "minio:9000",
     access_key="minio_admin",
     secret_key="minio_pass123",
     secure=False

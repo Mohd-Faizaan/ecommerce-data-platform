@@ -60,7 +60,9 @@ services:
       KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
 
   airflow-webserver:
-    image: apache/airflow:2.9.0
+    build:
+      context: ./airflow
+      dockerfile: Dockerfile
     container_name: airflow-webserver
     depends_on:
       - airflow-postgres
@@ -70,15 +72,20 @@ services:
       AIRFLOW__CORE__LOAD_EXAMPLES: "false"
       _AIRFLOW_WWW_USER_USERNAME: ${AIRFLOW_ADMIN_USER}
       _AIRFLOW_WWW_USER_PASSWORD: ${AIRFLOW_ADMIN_PASSWORD}
+      AIRFLOW__WEBSERVER__SECRET_KEY: ${AIRFLOW_SECRET_KEY}      
     ports:
       - "8080:8080"
     volumes:
       - ./airflow/dags:/opt/airflow/dags
       - ./airflow/plugins:/opt/airflow/plugins
+      - ./data-generator:/opt/airflow/project/data-generator
+      - ./ingestion:/opt/airflow/project/ingestion
     command: webserver
 
   airflow-scheduler:
-    image: apache/airflow:2.9.0
+    build:
+      context: ./airflow
+      dockerfile: Dockerfile
     container_name: airflow-scheduler
     depends_on:
       - airflow-postgres
@@ -87,9 +94,12 @@ services:
       AIRFLOW__CORE__EXECUTOR: LocalExecutor
       AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: postgresql+psycopg2://${AIRFLOW_POSTGRES_USER}:${AIRFLOW_POSTGRES_PASSWORD}@airflow-postgres/${AIRFLOW_POSTGRES_DB}
       AIRFLOW__CORE__LOAD_EXAMPLES: "false"
+      AIRFLOW__WEBSERVER__SECRET_KEY: ${AIRFLOW_SECRET_KEY}      
     volumes:
       - ./airflow/dags:/opt/airflow/dags
       - ./airflow/plugins:/opt/airflow/plugins
+      - ./data-generator:/opt/airflow/project/data-generator
+      - ./ingestion:/opt/airflow/project/ingestion
     command: scheduler
 
 volumes:
