@@ -101,6 +101,31 @@ services:
       - ./data-generator:/opt/airflow/project/data-generator
       - ./ingestion:/opt/airflow/project/ingestion
     command: scheduler
+  spark-master:
+    image: apache/spark:3.5.0
+    container_name: spark-master
+    user: root
+    command: /opt/spark/bin/spark-class org.apache.spark.deploy.master.Master
+    environment:
+      SPARK_NO_DAEMONIZE: "true"
+    ports:
+      - "7077:7077"
+      - "8081:8080"
+    volumes:
+      - ./spark-jobs:/opt/spark-jobs
+
+  spark-worker:
+    image: apache/spark:3.5.0
+    container_name: spark-worker
+    user: root
+    command: /opt/spark/bin/spark-class org.apache.spark.deploy.worker.Worker spark://spark-master:7077
+    environment:
+      SPARK_NO_DAEMONIZE: "true"
+    depends_on:
+      - spark-master
+    volumes:
+      - ./spark-jobs:/opt/spark-jobs  
+
 
 volumes:
   warehouse-postgres-data:
