@@ -32,7 +32,7 @@ def clean_orders(spark, target_date):
 
     print(f"Cleaned orders: {df.count()} raw -> {cleaned.count()} after cleaning")
     print(f"Written to {silver_path}")
-
+    return cleaned
 def clean_inventory(spark, target_date):
     raw_path = f"s3a://raw-data/inventory/{target_date}/inventory_{target_date}.csv"
     df = spark.read.option("header", True).option("inferSchema", True).csv(raw_path)
@@ -46,8 +46,23 @@ def clean_inventory(spark, target_date):
     silver_path = f"s3a://raw-data/silver/inventory/{target_date}/"
     cleaned.write.mode("overwrite").parquet(silver_path)
 
-    print(f"Cleaned inventory: {df.count()} raw -> {cleaned.count()} after cleaning")
+    print(f"Cleaned orders: {df.count()} raw -> {cleaned.count()} after cleaning")
     print(f"Written to {silver_path}")
+    return cleaned
+
+def write_to_postgres(df, table_name):
+    (
+        df.write
+        .format("jdbc")
+        .option("url", "jdbc:postgresql://warehouse-postgres:5432/ecommerce_warehouse")
+        .option("dbtable", f"staging.{table_name}")
+        .option("user", "warehouse_user")
+        .option("password", "warehouse_pass123")
+        .option("driver", "org.postgresql.Driver")
+        .mode("append")
+        .save()
+    )
+    print(f"Written to Postgres table: staging.{table_name}")
 
 if __name__ == "__main__":
     target_date = sys.argv[1] if len(sys.argv) > 1 else None
@@ -56,6 +71,11 @@ if __name__ == "__main__":
         sys.exit(1)
 
     spark = get_spark_session()
-    clean_orders(spark, target_date)
-    clean_inventory(spark, target_date)
+
+    orders_cleaned = clean_orders(spark, target_date)
+    inventory_cleaned = clean_inventory(spark, target_date)
+
+    write_to_postgres(orders_cleaned, "orders")
+    write_to_postgres(inventory_cleaned, "inventory")
+
     spark.stop()
