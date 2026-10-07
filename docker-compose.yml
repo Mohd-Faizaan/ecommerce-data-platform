@@ -80,6 +80,7 @@ services:
       - ./airflow/plugins:/opt/airflow/plugins
       - ./data-generator:/opt/airflow/project/data-generator
       - ./ingestion:/opt/airflow/project/ingestion
+      - /var/run/docker.sock:/var/run/docker.sock
     command: webserver
 
   airflow-scheduler:
@@ -100,6 +101,7 @@ services:
       - ./airflow/plugins:/opt/airflow/plugins
       - ./data-generator:/opt/airflow/project/data-generator
       - ./ingestion:/opt/airflow/project/ingestion
+      - /var/run/docker.sock:/var/run/docker.sock
     command: scheduler
   spark-master:
     image: apache/spark:3.5.0
