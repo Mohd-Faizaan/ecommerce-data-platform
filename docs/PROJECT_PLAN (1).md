@@ -49,9 +49,11 @@ Progress doc for how this was wired up.
 
 ### Zone 3 — Processing & Transformation
 - **Batch:** ✅ Spark cleans raw data → Silver layer (done, automated in
-  Airflow). dbt builds Gold layer star schema (`fact_orders`,
-  `dim_customers`, `dim_products`, `dim_date`), including SCD Type 2 for
-  product price history — not started yet
+  Airflow), ✅ cleaned data staged into Postgres (`staging.orders`,
+  `staging.inventory`). ✅ dbt installed and connected to the warehouse.
+  dbt builds Gold layer star schema (`fact_orders`, `dim_customers`,
+  `dim_products`, `dim_date`), including SCD Type 2 for product price
+  history — **modeling itself not started yet, connection is ready**
 - **Streaming:** Spark Structured Streaming computes live windowed metrics
   (orders/minute, top products right now) from Kafka directly — not
   started yet
@@ -83,6 +85,15 @@ Progress doc for how this was wired up.
 
 **Resource profile:** Full stack (6-core CPU, 16GB RAM, Windows + WSL2)
 
+**Note on ports:** `warehouse-postgres` is exposed on host port **5434**
+(not the Postgres default 5432) — a native Postgres process running
+directly on Windows was found squatting on 5432, silently intercepting
+connections from host-side tools (dbt, local Python scripts) while
+`docker exec`-based tests kept misleadingly succeeding via trust auth.
+Container-to-container traffic (Spark, Airflow) is unaffected, since they
+still use the internal Docker network and port 5432 there — only
+connections from Windows itself need port 5434.
+
 ---
 
 ## 4. Build Order (Phases)
@@ -94,10 +105,13 @@ Progress doc for how this was wired up.
    orders/inventory (batch), clickstream events (streaming via Kafka)
 4. ✅ **Ingestion wiring** — land raw generator output into MinIO (Bronze)
 5. ✅ **Orchestration** — Airflow DAGs to schedule batch ingestion
-6. ✅ **Spark cleaning** — Bronze → Silver, wired into Airflow, fully
-   automated daily run (dbt star schema / SCD Type 2 for Gold layer still
-   pending — see item 6b below)
-6b. ⬜ **dbt modeling** — Silver → Gold star schema + SCD Type 2 — **next up**
+6. ✅ **Spark cleaning + staging** — Bronze → Silver (Parquet in MinIO) →
+   staged into Postgres (`staging.orders`, `staging.inventory`), all
+   wired into Airflow, fully automated daily run
+6b. ✅ **dbt setup** — installed, connected to warehouse (note: warehouse
+   Postgres now exposed on host port **5434**, not 5432 — a native
+   Postgres process on Windows was conflicting on the default port).
+   ⬜ **Actual star schema modeling + SCD Type 2 — next up**
 7. ⬜ **Streaming layer** — Spark Structured Streaming on Kafka topics for
    live metrics
 8. ⬜ **Data quality gate** — Great Expectations checks wired into Airflow

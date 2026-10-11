@@ -1,6 +1,6 @@
 # Project Progress Tracker
 
-_Last updated: based on work completed through Step 7 (full pipeline automated end-to-end in Airflow, including Spark)_
+_Last updated: based on work completed through Step 9 setup (dbt installed and connected to the warehouse)_
 
 ---
 
@@ -162,10 +162,72 @@ _Last updated: based on work completed through Step 7 (full pipeline automated e
     manual steps — `Cleaned inventory: 200 raw -> 200 after cleaning`
     written to the Silver layer, triggered entirely by Airflow
 
+- [x] **Step 8 — Stage Silver data into Postgres** (so dbt has SQL tables to model)
+  - Extended `clean_orders_inventory.py` with a `write_to_postgres()`
+    function using Spark's JDBC writer (`format("jdbc")`, append mode)
+  - Both `clean_orders` and `clean_inventory` now return their cleaned
+    DataFrames so they can be reused for both the Parquet write (Silver
+    in MinIO) and the Postgres write (staging tables), instead of
+    reading the data twice
+  - Created `staging.orders` and `staging.inventory` tables manually in
+    `ecommerce_warehouse` with explicit column types, rather than relying
+    on Spark's JDBC writer to auto-create them (auto-created tables often
+    get generic/inconsistent types)
+  - Added a third Maven package to the `spark-submit` command,
+    `org.postgresql:postgresql:42.7.1` — the JDBC driver that lets Spark
+    actually speak to Postgres over the network (same pattern as the S3A
+    connector for MinIO: Spark needs the right driver JAR for every
+    external system it talks to)
+  - Ran cleanly on the first attempt — no debugging needed this time:
+    `Written to Postgres table: staging.orders` /
+    `staging.inventory`, confirmed row counts match (150 orders, 200
+    inventory records)
+  - This is the final step before dbt: Silver data now exists in actual
+    SQL tables, which dbt's Postgres adapter can query and model
+
+### dbt Setup
+- [x] **Step 9 (setup) — dbt installed and connected to the warehouse**
+  - Installed `dbt-core` + `dbt-postgres` into the existing venv (no new
+    Docker container needed — dbt runs directly as a CLI tool, unlike
+    every other service in this project)
+  - Ran `dbt init` to scaffold `dbt-projects/ecommerce_dbt`, configured
+    `profiles.yml` (lives outside the project, in `~/.dbt/`, so
+    credentials never get committed to GitHub)
+  - **Hit a genuinely tricky bug:** `dbt debug` kept failing with
+    `password authentication failed`, even after confirming the password
+    was correct. Root cause took real investigation to track down:
+    1. First suspected a typo from the hidden password prompt during
+       `dbt init` — re-set the password directly in `profiles.yml`, no fix
+    2. Tested connecting via `docker compose exec` (works) and via
+       `psql -h 127.0.0.1` (also works, no password prompt at all) —
+       turned out both were silently hitting Postgres's `trust`
+       authentication rule for local/loopback addresses, which never
+       actually validates a password, so these "successful" tests were
+       misleading
+    3. Checked `pg_hba.conf` directly — confirmed `trust` only applies to
+       exact loopback matches; genuine external connections require
+       `scram-sha-256` (a real password check)
+    4. Tested the actual connection path dbt uses (`psycopg2` from
+       Windows, not from inside a container) — this is what finally
+       exposed the real problem
+    5. **Root cause:** a **native Postgres process was already running
+       directly on Windows**, squatting on port 5432 and intercepting
+       every connection attempt from the Windows side before it ever
+       reached the Docker container. `docker exec` always bypassed it
+       (container-internal), which is exactly why every "it works"
+       test was misleading
+    6. **Fix:** remapped the Docker warehouse Postgres to host port
+       `5434` instead of `5432` (changed `WAREHOUSE_POSTGRES_PORT` in
+       `.env`, updated `profiles.yml` to match) — sidesteps the
+       conflicting native process entirely rather than needing to find
+       and permanently disable it
+  - Confirmed: both a direct `psycopg2` connection and `dbt debug`
+    succeed on port 5434
+
 ---
 
 ## 🚧 Not Started Yet
-- [ ] dbt project — star schema modeling (Silver → Gold)
+- [ ] dbt project — star schema modeling (Silver/staging → Gold)
 - [ ] SCD Type 2 implementation for product price history
 - [ ] Spark Structured Streaming job for live clickstream metrics
 - [ ] Great Expectations data quality suite
@@ -232,3 +294,16 @@ _Last updated: based on work completed through Step 7 (full pipeline automated e
     host daemon's API version. Debian's default `docker.io` package was
     too outdated; installing `docker-ce-cli` from Docker's official APT
     repo fixed the version mismatch.
+13. **A connection that "works" can still be misleading** — Postgres's
+    default `pg_hba.conf` trusts exact loopback addresses (`127.0.0.1`,
+    `::1`) with no password check at all. Several connection tests
+    "succeeded" without ever actually validating the password, which hid
+    the real problem. The real root cause was a native Postgres process
+    already running directly on Windows and squatting on port 5432,
+    intercepting connections meant for the Docker container before they
+    ever reached it. Lesson: a port being "in use" doesn't always mean
+    by the service you expect — check what's actually listening
+    (`netstat -ano`, then `Get-Process -Id <pid>`) before assuming a
+    credentials problem. Remapping the container to a different host
+    port was faster and more reliable than tracking down and disabling
+    the conflicting process.
